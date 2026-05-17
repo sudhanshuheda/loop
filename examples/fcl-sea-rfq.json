@@ -1,0 +1,95 @@
+{
+  "loop_version": "0.1",
+  "message_type": "rfq",
+  "message_action": "rfq_initial",
+  "message_id": "d2a4f6c8-1e3a-4b5c-9d7e-8a9b0c1d2e3f",
+  "thread_id":  "d2a4f6c8-1e3a-4b5c-9d7e-8a9b0c1d2e3f",
+  "issued_at":  "2026-05-17T07:15:00Z",
+  "subject":    "RFQ: FCL sea export NSA → JEA, 2x40HC dry goods, DAP delivery",
+  "issuer": {
+    "org_name":     "Acme Logistics Pvt Ltd",
+    "contact_name": "Priya Shah",
+    "email":        "priya@acme.example"
+  },
+  "issuer_role": "forwarder_requesting_quote",
+  "recipients": [
+    {
+      "org_name":     "Cosmos Shipping NVOCC",
+      "contact_name": "Sales",
+      "email":        "rates@cosmos-shipping.example"
+    }
+  ],
+  "body": {
+    "title":              "FCL sea export NSA → JEA, 2x40HC dry, DAP",
+    "description":        "Regular monthly shipment for our customer. DAP terms to consignee warehouse in Jebel Ali Free Zone. Cargo is dry, non-hazardous, non-temperature-controlled.",
+    "quote_deadline":     "2026-05-19T17:00:00Z",
+    "validity_required":  "P21D",
+    "currency_preference": "USD",
+    "line_items": [
+      {
+        "id":          "1",
+        "description": "FCL sea freight, 40HC dry goods, NSA → JEA",
+        "quantity":    { "value": "2", "unit": "EA" }
+      }
+    ],
+    "flags": {
+      "time_sensitive":          false,
+      "cost_vs_time_preference": "cost",
+      "requested_quote_fields":  ["carrier", "transit_time", "validity", "free_days"],
+      "sender_company_type":     "freight_forwarder",
+      "carrier_preference":      "Maersk, Hapag-Lloyd preferred; CMA acceptable"
+    },
+    "terms": {
+      "payment_terms": "Net 45",
+      "incoterms":     "DAP Jebel Ali"
+    },
+    "extensions": {
+      "freight": {
+        "mode":              "sea",
+        "offer_direction":   "export",
+        "sea_freight_type":  "FCL",
+        "service_type":      "port_to_door",
+        "service_level":     "standard",
+        "origin":            { "country": "IN", "city": "Mumbai", "port_code": "INNSA" },
+        "destination":       { "country": "AE", "city": "Dubai",  "port_code": "AEJEA" },
+        "delivery_address":  {
+          "country":     "AE",
+          "city":        "Dubai",
+          "postal_code": "0",
+          "street":      "Jebel Ali Free Zone, Plot LB-19"
+        },
+        "incoterms":         "DAP",
+        "incoterms_place":   "Jebel Ali",
+        "ready_date":        "2026-05-25",
+        "delivery_by":       "2026-06-10",
+        "commodity":         "Dry consumer goods (cookware, kitchenware)",
+        "hs_code":           "7323.99",
+        "cargo_type":        "general",
+        "containers": [
+          {
+            "type":         "40HC",
+            "iso_type":     "45G1",
+            "count":        2,
+            "is_reefer":    false,
+            "is_open_top":  false,
+            "is_flat_rack": false,
+            "in_gauge":     true,
+            "stackable":    true
+          }
+        ],
+        "hazardous":              { "is_hazardous": false },
+        "temperature_controlled": { "required": false },
+        "restricted_items":       { "has_restricted": false },
+        "declared_value":         { "amount": "92000.00", "currency": "USD" },
+        "commercial_invoice_value":{ "amount": "92000.00", "currency": "USD" },
+        "insurance":              { "required": false },
+        "brokerage":              { "required": true, "side": "destination" },
+        "customs_filings":        { "expected": ["shipping_bill_in"] }
+      }
+    }
+  },
+  "extraction_meta": {
+    "extraction_confidence": 0.90,
+    "data_completeness":     "complete"
+  }
+}

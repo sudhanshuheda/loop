@@ -1,0 +1,126 @@
+{
+  "loop_version": "0.1",
+  "message_type": "rfq",
+  "message_action": "rfq_initial",
+  "message_id": "e3b5d7a9-2f4c-4d6e-8f1a-3b5d7e9f1a2b",
+  "thread_id":  "e3b5d7a9-2f4c-4d6e-8f1a-3b5d7e9f1a2b",
+  "issued_at":  "2026-05-17T11:00:00Z",
+  "subject":    "RFQ: Hazmat air freight DEL → JFK, lithium-ion battery cells (UN3480)",
+  "issuer": {
+    "org_name":     "Acme Logistics Pvt Ltd",
+    "contact_name": "Priya Shah",
+    "email":        "priya@acme.example"
+  },
+  "issuer_role": "forwarder_requesting_quote",
+  "recipients": [
+    {
+      "org_name":     "BlueWing Freight",
+      "contact_name": "Hazmat Desk",
+      "email":        "hazmat@bluewing.example"
+    }
+  ],
+  "attachments": [
+    {
+      "filename":   "msds-li-ion-cells.pdf",
+      "media_type": "application/pdf",
+      "uri":        "cid:msds-0",
+      "kind":       "msds",
+      "description":"MSDS for lithium-ion battery cells, manufacturer XYZ Cells Pvt Ltd"
+    }
+  ],
+  "body": {
+    "title":              "Hazmat air: DEL → JFK, Li-ion battery cells (UN3480)",
+    "description":        "Hazmat air export. Lithium-ion battery cells, UN3480, Class 9, PG II. CAO (cargo aircraft only). MSDS attached. Customer is the battery manufacturer; they are the shipper of record.",
+    "quote_deadline":     "2026-05-20T12:00:00Z",
+    "validity_required":  "P10D",
+    "currency_preference": "USD",
+    "line_items": [
+      {
+        "id":          "1",
+        "description": "Air freight, DEL → JFK, hazmat (UN3480, Class 9, PG II)",
+        "quantity":    { "value": "1", "unit": "EA" },
+        "notes":       "Single consolidation. See packages for breakdown."
+      }
+    ],
+    "end_customer": {
+      "org_name":     "XYZ Cells Pvt Ltd",
+      "contact_name": "Vinod Reddy",
+      "email":        "vinod@xyzcells.example",
+      "address":      { "country": "IN", "region": "Telangana", "city": "Hyderabad" }
+    },
+    "flags": {
+      "time_sensitive":          true,
+      "cost_vs_time_preference": "time",
+      "requested_quote_fields":  ["carrier", "transit_time", "validity", "us_acas_filing"],
+      "sender_company_type":     "freight_forwarder"
+    },
+    "terms": {
+      "payment_terms": "Net 30",
+      "incoterms":     "FCA Delhi"
+    },
+    "extensions": {
+      "freight": {
+        "mode":              "air",
+        "offer_direction":   "export",
+        "service_type":      "port_to_port",
+        "service_level":     "express",
+        "origin":            { "country": "IN", "city": "New Delhi", "port_code": "DEL" },
+        "destination":       { "country": "US", "city": "New York",  "port_code": "JFK" },
+        "incoterms":         "FCA",
+        "incoterms_place":   "Delhi",
+        "ready_date":        "2026-05-22",
+        "delivery_by":       "2026-05-28",
+        "time_sensitive":    true,
+        "commodity":         "Lithium-ion battery cells, UN3480",
+        "hs_code":           "8507.60",
+        "hts_code":          "8507.60.0020",
+        "cargo_type":        "hazardous",
+        "commodity_attributes": { "battery_present": true, "fragile": true },
+        "pieces":             24,
+        "gross_weight":       { "value": "560", "unit": "KGM" },
+        "chargeable_weight":  { "value": "720", "unit": "KGM" },
+        "volume":             { "value": "1.12", "unit": "MTQ" },
+        "dimensional_factor": 6000,
+        "packages": [
+          {
+            "kind":        "carton",
+            "count":       24,
+            "weight_each": { "value": "23.3", "unit": "KGM" },
+            "dimensions":  { "l": "55", "w": "40", "h": "35", "unit": "CMT" },
+            "stackable":   true,
+            "oversized":   false
+          }
+        ],
+        "hazardous": {
+          "is_hazardous":         true,
+          "un_numbers":           ["UN3480"],
+          "class_numbers":        ["9"],
+          "packing_groups":       ["II"],
+          "proper_shipping_name": "Lithium ion batteries",
+          "msds_attachment_refs": ["cid:msds-0"]
+        },
+        "temperature_controlled": { "required": false },
+        "restricted_items":       { "has_restricted": false },
+        "declared_value":         { "amount": "42000.00", "currency": "USD" },
+        "commercial_invoice_value":{ "amount": "42000.00", "currency": "USD" },
+        "insurance":              { "required": true, "kind": "clause_a", "covered_value": { "amount": "42000.00", "currency": "USD" } },
+        "brokerage":              { "required": true, "side": "destination" },
+        "customs_filings":        { "expected": ["shipping_bill_in", "acas_us"] },
+        "known_shipper":          "cao",
+        "shipper": {
+          "org_name":     "XYZ Cells Pvt Ltd",
+          "contact_name": "Vinod Reddy",
+          "email":        "vinod@xyzcells.example"
+        }
+      }
+    }
+  },
+  "extraction_meta": {
+    "extraction_confidence": 0.88,
+    "data_completeness":     "partial",
+    "missing_fields": [
+      { "field": "extensions.freight.consignee", "reason": "Consignee on US side not yet finalized — customer is between two distributors." }
+    ],
+    "extraction_reasoning": "Battery presence triggers hazmat path. ACAS filing flagged because US air destination."
+  }
+}

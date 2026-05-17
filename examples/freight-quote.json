@@ -1,0 +1,70 @@
+{
+  "loop_version": "0.1",
+  "message_type": "quote",
+  "message_action": "quote_provided",
+  "message_id":   "a4e6c2d1-7b94-4ea8-9f02-3c8d5b6e7f10",
+  "thread_id":    "9c2a8b8e-2c1f-4f3a-9d2b-7a1d2a3f4e5d",
+  "in_reply_to":  "9c2a8b8e-2c1f-4f3a-9d2b-7a1d2a3f4e5d",
+  "issued_at":    "2026-05-17T14:22:00Z",
+  "subject":      "Quote: Air freight BLR → FRA, 2 pallets electronics",
+  "issuer": {
+    "org_name":     "BlueWing Freight",
+    "contact_name": "Rahul Menon",
+    "email":        "rahul.menon@bluewing.example",
+    "phone":        "+91-22-4000-1111"
+  },
+  "issuer_role": "forwarder_providing_quote",
+  "recipients": [
+    {
+      "org_name":     "Acme Logistics Pvt Ltd",
+      "contact_name": "Priya Shah",
+      "email":        "priya@acme.example"
+    }
+  ],
+  "body": {
+    "rfq_message_id": "9c2a8b8e-2c1f-4f3a-9d2b-7a1d2a3f4e5d",
+    "validity": { "valid_until": "2026-05-26T23:59:59Z" },
+    "line_items": [
+      {
+        "id":          "1",
+        "description": "Air freight, BLR → FRA, palletized non-haz electronics",
+        "quantity":    { "value": "1100", "unit": "KGM" },
+        "unit_price":  { "amount": "1.85", "currency": "USD" },
+        "rate_basis":  "per_kg",
+        "notes":       "Chargeable weight basis."
+      }
+    ],
+    "subtotal": { "amount": "2035.00", "currency": "USD" },
+    "charges": [
+      { "label": "Fuel surcharge",    "amount": { "amount": "275.00", "currency": "USD" } },
+      { "label": "Security surcharge","amount": { "amount": "44.00",  "currency": "USD" } },
+      { "label": "Handling",          "amount": { "amount": "60.00",  "currency": "USD" } }
+    ],
+    "taxes": [
+      { "label": "GST 18%", "amount": { "amount": "434.16", "currency": "USD" } }
+    ],
+    "total":        { "amount": "2848.16", "currency": "USD" },
+    "transit_time": { "min_days": 3, "max_days": 5, "notes": "subject to space" },
+    "carrier":      "Lufthansa Cargo",
+    "terms": {
+      "payment_terms": "Net 30",
+      "incoterms":     "FCA Bengaluru"
+    },
+    "notes": "Rate subject to space availability at time of booking. ULD palletization at BLR included.",
+    "extensions": {
+      "freight": {
+        "mode":              "air",
+        "carrier":           "Lufthansa Cargo",
+        "carrier_routing":   "BLR-FRA direct (LH 757)",
+        "transit_time":      { "min_days": 3, "max_days": 5, "notes": "subject to space" },
+        "included_charges":  ["ULD palletization at BLR", "Airline terminal handling at origin"],
+        "excluded_charges":  ["Destination THC", "EU customs clearance", "Local delivery FRA"],
+        "validity_subject_to": "Subject to space and rate availability at time of booking."
+      }
+    }
+  },
+  "extraction_meta": {
+    "extraction_confidence": 0.92,
+    "data_completeness":     "complete"
+  }
+}

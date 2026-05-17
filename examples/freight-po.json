@@ -1,0 +1,84 @@
+{
+  "loop_version": "0.1",
+  "message_type": "po",
+  "message_action": "award",
+  "message_id":   "c8b1e9a7-d6f3-4b21-8a05-0e1f2c3b4d56",
+  "thread_id":    "9c2a8b8e-2c1f-4f3a-9d2b-7a1d2a3f4e5d",
+  "in_reply_to":  "a4e6c2d1-7b94-4ea8-9f02-3c8d5b6e7f10",
+  "issued_at":    "2026-05-18T08:10:00Z",
+  "subject":      "PO ACME-2026-00421: Air freight BLR → FRA",
+  "issuer": {
+    "org_name":     "Acme Logistics Pvt Ltd",
+    "contact_name": "Priya Shah",
+    "email":        "priya@acme.example",
+    "tax_id":       { "kind": "GSTIN", "value": "29ABCDE1234F1Z5" }
+  },
+  "issuer_role": "forwarder_requesting_quote",
+  "recipients": [
+    {
+      "org_name":     "BlueWing Freight",
+      "contact_name": "Rahul Menon",
+      "email":        "rahul.menon@bluewing.example"
+    }
+  ],
+  "body": {
+    "po_number":        "ACME-2026-00421",
+    "quote_message_id": "a4e6c2d1-7b94-4ea8-9f02-3c8d5b6e7f10",
+    "line_items": [
+      {
+        "id":          "1",
+        "description": "Air freight, BLR → FRA, palletized non-haz electronics (1100 kg chargeable)",
+        "quantity":    { "value": "1100", "unit": "KGM" },
+        "unit_price":  { "amount": "1.85", "currency": "USD" },
+        "rate_basis":  "per_kg"
+      }
+    ],
+    "subtotal": { "amount": "2035.00", "currency": "USD" },
+    "charges": [
+      { "label": "Fuel surcharge",    "amount": { "amount": "275.00", "currency": "USD" } },
+      { "label": "Security surcharge","amount": { "amount": "44.00",  "currency": "USD" } },
+      { "label": "Handling",          "amount": { "amount": "60.00",  "currency": "USD" } }
+    ],
+    "taxes": [
+      { "label": "GST 18%", "amount": { "amount": "434.16", "currency": "USD" } }
+    ],
+    "total": { "amount": "2848.16", "currency": "USD" },
+    "delivery": {
+      "ship_to": {
+        "country":     "DE",
+        "city":        "Frankfurt am Main",
+        "postal_code": "60549",
+        "street":      "Cargo City Süd, Geb. 535",
+        "port_code":   "FRA"
+      },
+      "bill_to": {
+        "country":     "IN",
+        "region":      "Karnataka",
+        "city":        "Bengaluru",
+        "postal_code": "560100",
+        "street":      "Plot 42, Whitefield"
+      },
+      "required_by": "2026-05-30"
+    },
+    "terms": {
+      "payment_terms": "Net 30",
+      "incoterms":     "FCA Bengaluru"
+    },
+    "notes": "Please confirm receipt and provide AWB once flight is locked.",
+    "extensions": {
+      "freight": {
+        "consignee": {
+          "org_name":     "Acme Distribution GmbH",
+          "contact_name": "Hans Müller",
+          "email":        "hans.muller@acme-de.example",
+          "address": {
+            "country":     "DE",
+            "city":        "Frankfurt am Main",
+            "postal_code": "60549",
+            "street":      "Cargo City Süd, Geb. 535"
+          }
+        }
+      }
+    }
+  }
+}

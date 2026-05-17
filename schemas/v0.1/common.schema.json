@@ -1,0 +1,512 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Loop Common Types v0.1",
+  "description": "Reusable types shared by all Loop message schemas.",
+  "$defs": {
+    "Uuid": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+    },
+    "RFC3339DateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ISODate": {
+      "type": "string",
+      "format": "date"
+    },
+    "ISODuration": {
+      "type": "string",
+      "pattern": "^P(?!$)(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(\\.\\d+)?S)?)?$"
+    },
+    "CurrencyCode": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "CountryCode": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "DecimalString": {
+      "type": "string",
+      "pattern": "^-?(\\d+)(\\.\\d+)?$"
+    },
+    "MessageType": {
+      "type": "string",
+      "enum": [
+        "rfq",
+        "quote",
+        "po",
+        "decline",
+        "info_request",
+        "info_provided",
+        "acknowledgement"
+      ]
+    },
+    "MessageAction": {
+      "type": "string",
+      "enum": [
+        "rfq_initial",
+        "rfq_modification",
+        "rfq_addition",
+        "quote_provided",
+        "info_request",
+        "info_provided",
+        "acknowledgement",
+        "award",
+        "cancel",
+        "other"
+      ]
+    },
+    "IssuerRole": {
+      "type": "string",
+      "enum": [
+        "consignee",
+        "forwarder_requesting_quote",
+        "forwarder_providing_quote",
+        "shipper",
+        "carrier",
+        "other"
+      ]
+    },
+    "RateBasis": {
+      "type": "string",
+      "enum": [
+        "per_unit",
+        "per_kg",
+        "per_cbm",
+        "per_container",
+        "per_shipment",
+        "all_in",
+        "other"
+      ]
+    },
+    "Money": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "amount",
+        "currency"
+      ],
+      "properties": {
+        "amount": {
+          "$ref": "#/$defs/DecimalString"
+        },
+        "currency": {
+          "$ref": "#/$defs/CurrencyCode"
+        }
+      }
+    },
+    "Quantity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unit"
+      ],
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/DecimalString"
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "Address": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "country"
+      ],
+      "properties": {
+        "country": {
+          "$ref": "#/$defs/CountryCode"
+        },
+        "region": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "postal_code": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "port_code": {
+          "type": "string",
+          "description": "UN/LOCODE"
+        }
+      }
+    },
+    "Party": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "org_name",
+        "email"
+      ],
+      "properties": {
+        "org_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contact_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/$defs/Address"
+        },
+        "tax_id": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value"
+          ],
+          "properties": {
+            "kind": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        },
+        "identifiers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Timeframe": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ready_date": {
+          "$ref": "#/$defs/ISODate"
+        },
+        "required_by": {
+          "$ref": "#/$defs/ISODate"
+        },
+        "valid_until": {
+          "$ref": "#/$defs/RFC3339DateTime"
+        }
+      }
+    },
+    "LineItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description",
+        "quantity"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sku": {
+          "type": "string"
+        },
+        "quantity": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "unit_price": {
+          "$ref": "#/$defs/Money"
+        },
+        "rate_basis": {
+          "$ref": "#/$defs/RateBasis"
+        },
+        "specs": {
+          "type": "object"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "LineItemUnpriced": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/LineItem"
+        },
+        {
+          "not": {
+            "required": [
+              "unit_price"
+            ]
+          }
+        },
+        {
+          "not": {
+            "required": [
+              "rate_basis"
+            ]
+          }
+        }
+      ]
+    },
+    "LineItemPriced": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/LineItem"
+        },
+        {
+          "required": [
+            "unit_price",
+            "rate_basis"
+          ]
+        }
+      ]
+    },
+    "LabeledMoney": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "amount"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "amount": {
+          "$ref": "#/$defs/Money"
+        }
+      }
+    },
+    "TransitTime": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "min_days": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_days": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "Attachment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "filename",
+        "uri"
+      ],
+      "properties": {
+        "filename": {
+          "type": "string"
+        },
+        "media_type": {
+          "type": "string"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{64}$"
+        },
+        "uri": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "spec_sheet",
+            "drawing",
+            "msds",
+            "packing_list",
+            "commercial_invoice",
+            "photo",
+            "other"
+          ]
+        }
+      }
+    },
+    "Terms": {
+      "type": "object",
+      "description": "Free-form terms. Conventional keys (any optional): payment_terms, incoterms, warranty, sla, validity, cancellation, late_fee.",
+      "additionalProperties": true
+    },
+    "OperationalFlags": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "time_sensitive": {
+          "type": "boolean"
+        },
+        "cost_vs_time_preference": {
+          "type": "string",
+          "enum": [
+            "cost",
+            "time",
+            "balanced"
+          ]
+        },
+        "requested_quote_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sender_company_type": {
+          "type": "string",
+          "enum": [
+            "customs_broker",
+            "freight_forwarder",
+            "manufacturer",
+            "trading_company",
+            "consignee",
+            "other"
+          ]
+        },
+        "carrier_preference": {
+          "type": "string"
+        },
+        "preferred_route": {
+          "type": "string"
+        }
+      }
+    },
+    "MissingField": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "field",
+        "reason"
+      ],
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "Dotted path within the body or extensions."
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "ExtractionMeta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "extraction_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "data_completeness": {
+          "type": "string",
+          "enum": [
+            "complete",
+            "partial",
+            "missing"
+          ]
+        },
+        "missing_fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MissingField"
+          }
+        },
+        "extraction_reasoning": {
+          "type": "string"
+        }
+      }
+    },
+    "Envelope": {
+      "type": "object",
+      "required": [
+        "loop_version",
+        "message_type",
+        "message_action",
+        "message_id",
+        "thread_id",
+        "issued_at",
+        "issuer",
+        "issuer_role",
+        "recipients",
+        "body"
+      ],
+      "properties": {
+        "loop_version": {
+          "const": "0.1"
+        },
+        "message_type": {
+          "$ref": "#/$defs/MessageType"
+        },
+        "message_action": {
+          "$ref": "#/$defs/MessageAction"
+        },
+        "message_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "thread_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "in_reply_to": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "issued_at": {
+          "$ref": "#/$defs/RFC3339DateTime"
+        },
+        "issuer": {
+          "$ref": "#/$defs/Party"
+        },
+        "issuer_role": {
+          "$ref": "#/$defs/IssuerRole"
+        },
+        "recipients": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/Party"
+          }
+        },
+        "subject": {
+          "type": "string"
+        },
+        "body": {
+          "type": "object"
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Attachment"
+          }
+        },
+        "extraction_meta": {
+          "$ref": "#/$defs/ExtractionMeta"
+        }
+      }
+    }
+  }
+}

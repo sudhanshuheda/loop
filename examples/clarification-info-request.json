@@ -1,0 +1,42 @@
+{
+  "loop_version": "0.1",
+  "message_type": "info_request",
+  "message_action": "info_request",
+  "message_id": "11111111-2222-4333-8444-555555555555",
+  "thread_id":  "d2a4f6c8-1e3a-4b5c-9d7e-8a9b0c1d2e3f",
+  "in_reply_to":"d2a4f6c8-1e3a-4b5c-9d7e-8a9b0c1d2e3f",
+  "issued_at":  "2026-05-17T09:45:00Z",
+  "subject":    "Re: RFQ: FCL sea export NSA → JEA — need a couple of clarifications",
+  "issuer": {
+    "org_name":     "Cosmos Shipping NVOCC",
+    "contact_name": "Sales",
+    "email":        "rates@cosmos-shipping.example"
+  },
+  "issuer_role": "forwarder_providing_quote",
+  "recipients": [
+    { "org_name": "Acme Logistics Pvt Ltd", "contact_name": "Priya Shah", "email": "priya@acme.example" }
+  ],
+  "body": {
+    "concerns_message_id": "d2a4f6c8-1e3a-4b5c-9d7e-8a9b0c1d2e3f",
+    "questions": [
+      {
+        "id":         "q1",
+        "field_path": "extensions.freight.containers[0].is_reefer",
+        "question":   "Two 40HCs noted as dry — please confirm no temperature requirement on either box.",
+        "required":   true
+      },
+      {
+        "id":         "q2",
+        "field_path": "extensions.freight.brokerage.side",
+        "question":   "DAP terms typically imply destination clearance is on us. Please confirm we handle Jebel Ali customs too.",
+        "required":   true
+      },
+      {
+        "id":         "q3",
+        "field_path": "extensions.freight.delivery_address.street",
+        "question":   "Can you share the exact warehouse plot reference and gate access hours?",
+        "required":   false
+      }
+    ]
+  }
+}

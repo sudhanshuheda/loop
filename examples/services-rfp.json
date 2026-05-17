@@ -1,0 +1,63 @@
+{
+  "loop_version": "0.1",
+  "message_type": "rfq",
+  "message_action": "rfq_initial",
+  "message_id":   "b7d9c4e1-3a52-4f6b-91c8-2e0d4b8a1f23",
+  "thread_id":    "b7d9c4e1-3a52-4f6b-91c8-2e0d4b8a1f23",
+  "issued_at":    "2026-05-17T10:30:00Z",
+  "subject":      "RFQ: SOC 2 Type II audit engagement, FY26",
+  "issuer": {
+    "org_name":     "Northwind Labs",
+    "contact_name": "Anya Petrov",
+    "email":        "anya@northwind.example",
+    "address":      { "country": "US", "region": "CA", "city": "San Francisco" }
+  },
+  "issuer_role": "consignee",
+  "recipients": [
+    { "org_name": "Auditus & Co.",   "email": "rfp@auditus.example" },
+    { "org_name": "Compliance Hill", "email": "bd@compliancehill.example" }
+  ],
+  "body": {
+    "title":           "SOC 2 Type II audit engagement, FY26",
+    "description":     "Full-scope SOC 2 Type II covering security, availability, and confidentiality TSCs. 12-month observation window. Approximately 85 FTE, AWS-only infra, ~30 in-scope systems.",
+    "quote_deadline":  "2026-05-31T23:59:59Z",
+    "validity_required": "P60D",
+    "currency_preference": "USD",
+    "line_items": [
+      {
+        "id":          "audit",
+        "description": "SOC 2 Type II audit (security, availability, confidentiality)",
+        "quantity":    { "value": "1", "unit": "EA" },
+        "specs": {
+          "trust_services_criteria": ["security", "availability", "confidentiality"],
+          "observation_window_months": 12,
+          "fte_count":               85,
+          "in_scope_systems_approx": 30
+        }
+      },
+      {
+        "id":          "readiness",
+        "description": "Pre-audit readiness assessment (gap analysis + remediation plan)",
+        "quantity":    { "value": "1", "unit": "EA" }
+      }
+    ],
+    "flags": {
+      "cost_vs_time_preference": "balanced",
+      "sender_company_type":     "other"
+    },
+    "terms": {
+      "payment_terms": "50% on kickoff, 50% on report delivery",
+      "sla":           "Draft report within 30 days of fieldwork completion",
+      "deliverables":  ["Readiness report", "Type II audit report", "Management letter"]
+    },
+    "extensions": {
+      "services": {
+        "engagement_type": "audit",
+        "start_date":      "2026-07-01",
+        "end_date":        "2027-06-30",
+        "remote_ok":       true,
+        "data_residency":  ["US"]
+      }
+    }
+  }
+}

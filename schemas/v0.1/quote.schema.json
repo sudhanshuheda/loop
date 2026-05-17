@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Loop Quote (quote) v0.1",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/Envelope"
+    }
+  ],
+  "properties": {
+    "message_type": {
+      "const": "quote"
+    },
+    "message_action": {
+      "const": "quote_provided"
+    },
+    "body": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rfq_message_id",
+        "validity",
+        "line_items",
+        "subtotal",
+        "total"
+      ],
+      "properties": {
+        "rfq_message_id": {
+          "$ref": "common.schema.json#/$defs/Uuid"
+        },
+        "validity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "valid_until"
+          ],
+          "properties": {
+            "valid_until": {
+              "$ref": "common.schema.json#/$defs/RFC3339DateTime"
+            }
+          }
+        },
+        "line_items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/LineItemPriced"
+          }
+        },
+        "subtotal": {
+          "$ref": "common.schema.json#/$defs/Money"
+        },
+        "charges": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/LabeledMoney"
+          }
+        },
+        "taxes": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/LabeledMoney"
+          }
+        },
+        "total": {
+          "$ref": "common.schema.json#/$defs/Money"
+        },
+        "transit_time": {
+          "$ref": "common.schema.json#/$defs/TransitTime"
+        },
+        "carrier": {
+          "type": "string"
+        },
+        "terms": {
+          "$ref": "common.schema.json#/$defs/Terms"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "extensions": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

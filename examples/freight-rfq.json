@@ -1,0 +1,114 @@
+{
+  "loop_version": "0.1",
+  "message_type": "rfq",
+  "message_action": "rfq_initial",
+  "message_id": "9c2a8b8e-2c1f-4f3a-9d2b-7a1d2a3f4e5d",
+  "thread_id":  "9c2a8b8e-2c1f-4f3a-9d2b-7a1d2a3f4e5d",
+  "issued_at":  "2026-05-17T09:00:00Z",
+  "subject":    "RFQ: Air freight BLR → FRA, 2 pallets electronics",
+  "issuer": {
+    "org_name":     "Acme Logistics Pvt Ltd",
+    "contact_name": "Priya Shah",
+    "email":        "priya@acme.example",
+    "phone":        "+91-99-1234-5678",
+    "address": {
+      "country":     "IN",
+      "region":      "Karnataka",
+      "city":        "Bengaluru",
+      "postal_code": "560100",
+      "street":      "Plot 42, Whitefield"
+    },
+    "tax_id":      { "kind": "GSTIN", "value": "29ABCDE1234F1Z5" },
+    "identifiers": { "iec": "0712345678" }
+  },
+  "issuer_role": "forwarder_requesting_quote",
+  "recipients": [
+    {
+      "org_name":     "BlueWing Freight",
+      "contact_name": "Sales Desk",
+      "email":        "quotes@bluewing.example"
+    }
+  ],
+  "body": {
+    "title":              "Air freight: BLR → FRA, 2 pallets electronics",
+    "description":        "Forwarding on behalf of our customer Northwind Devices. Routine shipment for their distributor in Frankfurt. Non-hazardous. Pallets are wrapped and labeled.",
+    "quote_deadline":     "2026-05-19T12:00:00Z",
+    "validity_required":  "P14D",
+    "currency_preference": "USD",
+    "line_items": [
+      {
+        "id":          "1",
+        "description": "Electronics, palletized, non-hazardous",
+        "quantity":    { "value": "2", "unit": "PLT" },
+        "specs": {
+          "dimensions_cm": { "l": 120, "w": 100, "h": 145 },
+          "stackable":     false
+        }
+      }
+    ],
+    "end_customer": {
+      "org_name":     "Northwind Devices Pvt Ltd",
+      "contact_name": "Anita Rao",
+      "email":        "anita.rao@northwind-devices.example",
+      "phone":        "+91-80-4000-9000",
+      "address":      { "country": "IN", "region": "Karnataka", "city": "Bengaluru" }
+    },
+    "flags": {
+      "time_sensitive":          false,
+      "cost_vs_time_preference": "balanced",
+      "requested_quote_fields":  ["carrier", "transit_time", "validity"],
+      "sender_company_type":     "freight_forwarder"
+    },
+    "terms": {
+      "payment_terms": "Net 30",
+      "incoterms":     "FCA Bengaluru",
+      "insurance":     "All-risk, declared value USD 18,000"
+    },
+    "extensions": {
+      "freight": {
+        "mode":              "air",
+        "offer_direction":   "export",
+        "service_type":      "port_to_port",
+        "service_level":     "standard",
+        "origin":            { "country": "IN", "city": "Bengaluru", "port_code": "BLR" },
+        "destination":       { "country": "DE", "city": "Frankfurt am Main", "port_code": "FRA" },
+        "incoterms":         "FCA",
+        "incoterms_place":   "Bengaluru",
+        "ready_date":        "2026-05-22",
+        "commodity":         "Electronics, palletized",
+        "hs_code":           "8517.62.00",
+        "cargo_type":        "general",
+        "commodity_attributes": { "fragile": true, "battery_present": false },
+        "pieces":            2,
+        "gross_weight":      { "value": "850",  "unit": "KGM" },
+        "chargeable_weight": { "value": "1100", "unit": "KGM" },
+        "volume":            { "value": "1.74", "unit": "MTQ" },
+        "dimensional_factor": 6000,
+        "packages": [
+          {
+            "kind":        "pallet",
+            "count":       2,
+            "weight_each": { "value": "425", "unit": "KGM" },
+            "dimensions":  { "l": "120", "w": "100", "h": "145", "unit": "CMT" },
+            "stackable":   false,
+            "turnable":    true,
+            "oversized":   false
+          }
+        ],
+        "hazardous":         { "is_hazardous": false },
+        "temperature_controlled": { "required": false },
+        "restricted_items":  { "has_restricted": false },
+        "declared_value":    { "amount": "18000.00", "currency": "USD" },
+        "insurance":         { "required": true, "kind": "clause_a", "covered_value": { "amount": "18000.00", "currency": "USD" } },
+        "brokerage":         { "required": false },
+        "known_shipper":     "pax"
+      }
+    }
+  },
+  "extraction_meta": {
+    "extraction_confidence": 0.95,
+    "data_completeness":     "complete",
+    "missing_fields":        [],
+    "extraction_reasoning":  "All fields supplied by the procurement system. End customer attached from CRM record."
+  }
+}

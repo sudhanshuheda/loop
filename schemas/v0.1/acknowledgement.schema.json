@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Loop Acknowledgement (acknowledgement) v0.1",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/Envelope"
+    }
+  ],
+  "properties": {
+    "message_type": {
+      "const": "acknowledgement"
+    },
+    "message_action": {
+      "const": "acknowledgement"
+    },
+    "body": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "acknowledges_message_id"
+      ],
+      "properties": {
+        "acknowledges_message_id": {
+          "$ref": "common.schema.json#/$defs/Uuid"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

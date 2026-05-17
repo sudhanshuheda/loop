@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Loop Information Request (info_request) v0.1",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/Envelope"
+    }
+  ],
+  "properties": {
+    "message_type": {
+      "const": "info_request"
+    },
+    "message_action": {
+      "const": "info_request"
+    },
+    "body": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "concerns_message_id",
+        "questions"
+      ],
+      "properties": {
+        "concerns_message_id": {
+          "$ref": "common.schema.json#/$defs/Uuid"
+        },
+        "questions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "question"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "field_path": {
+                "type": "string"
+              },
+              "question": {
+                "type": "string",
+                "minLength": 1
+              },
+              "required": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

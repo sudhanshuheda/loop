@@ -1,0 +1,30 @@
+# Loop
+
+> An open JSON format for B2B procurement (RFQs, quotes, POs, clarifications), designed to be parsed and emitted by AI agents instead of scraped from prose email.
+
+Loop rides inside a normal MIME email as a `procurement.json` attachment with media type `application/vnd.loop+json; version=0.1`. The same email carries a human-readable rendering. Receivers without Loop support see a normal email. Receivers with Loop support skip the extraction step entirely.
+
+## Spec and reference
+
+- [Loop specification (SPEC.md)](https://github.com/sudhanshuheda/loop/blob/main/SPEC.md): the normative v0.1 spec — envelope, the 7 message types (`rfq`, `quote`, `po`, `decline`, `info_request`, `info_provided`, `acknowledgement`), common types, conformance rules.
+- [Agent-facing summary (agents.md)](https://sudhanshuheda.github.io/loop/agents.md): self-contained how-to for adding Loop support to an agent pipeline — install, emit, parse.
+- [JSON Schemas (schemas/v0.1/)](https://github.com/sudhanshuheda/loop/tree/main/schemas/v0.1): JSON Schema 2020-12 files for every message type. Generate type-safe parsers from these.
+- [Worked examples (examples/)](https://github.com/sudhanshuheda/loop/tree/main/examples): 9 realistic messages covering an air-freight thread, FCL sea, hazmat air with MSDS, a clarification round, and a services RFP.
+- [Email binding (bindings/email.md)](https://github.com/sudhanshuheda/loop/blob/main/bindings/email.md): MIME structure, `X-Loop-*` headers, fenced in-body fallback, inbound parsing rules.
+
+## Vertical extensions
+
+- [Freight extension reference (docs/extensions/freight.md)](https://github.com/sudhanshuheda/loop/blob/main/docs/extensions/freight.md): the v0.1 reference vertical, covering air / sea / road / rail with cargo classification, hazmat MSDS, container plan, customs filings, and brokerage.
+
+## Design
+
+- [Why agentic (docs/why-agentic.md)](https://github.com/sudhanshuheda/loop/blob/main/docs/why-agentic.md): what the design optimizes for, grounded against a production agentic procurement pipeline.
+- [Design principles (docs/design-principles.md)](https://github.com/sudhanshuheda/loop/blob/main/docs/design-principles.md): the rationale behind each spec decision.
+- [Comparison (docs/comparison.md)](https://github.com/sudhanshuheda/loop/blob/main/docs/comparison.md): how Loop differs from EDI, cXML, UBL, Peppol.
+- [Roadmap (docs/roadmap.md)](https://github.com/sudhanshuheda/loop/blob/main/docs/roadmap.md): planned extensions and message types beyond v0.1.
+
+## Get involved
+
+- [Repository](https://github.com/sudhanshuheda/loop)
+- [Contributing guide (CONTRIBUTING.md)](https://github.com/sudhanshuheda/loop/blob/main/CONTRIBUTING.md)
+- [Open an issue](https://github.com/sudhanshuheda/loop/issues/new)

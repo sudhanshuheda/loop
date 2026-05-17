@@ -1,0 +1,39 @@
+{
+  "loop_version": "0.1",
+  "message_type": "info_provided",
+  "message_action": "info_provided",
+  "message_id": "22222222-3333-4444-8555-666666666666",
+  "thread_id":  "d2a4f6c8-1e3a-4b5c-9d7e-8a9b0c1d2e3f",
+  "in_reply_to":"11111111-2222-4333-8444-555555555555",
+  "issued_at":  "2026-05-17T10:20:00Z",
+  "subject":    "Re: Re: RFQ: FCL sea export NSA → JEA — clarifications",
+  "issuer": {
+    "org_name":     "Acme Logistics Pvt Ltd",
+    "contact_name": "Priya Shah",
+    "email":        "priya@acme.example"
+  },
+  "issuer_role": "forwarder_requesting_quote",
+  "recipients": [
+    { "org_name": "Cosmos Shipping NVOCC", "contact_name": "Sales", "email": "rates@cosmos-shipping.example" }
+  ],
+  "body": {
+    "in_reply_to_request": "11111111-2222-4333-8444-555555555555",
+    "answers": [
+      {
+        "id":          "q1",
+        "answer_text": "Confirmed — both 40HC are dry, ambient cargo. No reefer required.",
+        "structured":  false
+      },
+      {
+        "id":          "q2",
+        "answer_text": "Yes, please handle Jebel Ali customs clearance on our behalf. We'll send importer-of-record details separately.",
+        "structured":  { "side": "destination" }
+      },
+      {
+        "id":          "q3",
+        "answer_text": "Plot LB-19, Jafza South Zone. Gate access 0700-2200 daily. Site contact will be provided 48h before ETA.",
+        "structured":  { "street": "Plot LB-19, Jafza South Zone" }
+      }
+    ]
+  }
+}

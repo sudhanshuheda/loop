@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Loop Decline (decline) v0.1",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/Envelope"
+    }
+  ],
+  "properties": {
+    "message_type": {
+      "const": "decline"
+    },
+    "message_action": {
+      "enum": [
+        "cancel",
+        "other"
+      ]
+    },
+    "body": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "declines_message_id",
+        "reason_code"
+      ],
+      "properties": {
+        "declines_message_id": {
+          "$ref": "common.schema.json#/$defs/Uuid"
+        },
+        "reason_code": {
+          "type": "string",
+          "enum": [
+            "no_capacity",
+            "out_of_scope",
+            "price_unworkable",
+            "timing",
+            "lane_not_served",
+            "insufficient_info",
+            "restricted_commodity",
+            "other"
+          ]
+        },
+        "reason_text": {
+          "type": "string"
+        },
+        "alternative_proposal": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

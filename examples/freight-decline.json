@@ -1,0 +1,29 @@
+{
+  "loop_version": "0.1",
+  "message_type": "decline",
+  "message_action": "other",
+  "message_id":   "f1d3e7b2-9c40-4a8b-bd6e-7a90b1c2d3e4",
+  "thread_id":    "9c2a8b8e-2c1f-4f3a-9d2b-7a1d2a3f4e5d",
+  "in_reply_to":  "9c2a8b8e-2c1f-4f3a-9d2b-7a1d2a3f4e5d",
+  "issued_at":    "2026-05-17T11:05:00Z",
+  "subject":      "Re: RFQ: Air freight BLR → FRA, 2 pallets electronics",
+  "issuer": {
+    "org_name":     "SkyHawk Cargo",
+    "contact_name": "Operations",
+    "email":        "ops@skyhawk.example"
+  },
+  "issuer_role": "forwarder_providing_quote",
+  "recipients": [
+    {
+      "org_name":     "Acme Logistics Pvt Ltd",
+      "contact_name": "Priya Shah",
+      "email":        "priya@acme.example"
+    }
+  ],
+  "body": {
+    "declines_message_id":  "9c2a8b8e-2c1f-4f3a-9d2b-7a1d2a3f4e5d",
+    "reason_code":          "no_capacity",
+    "reason_text":          "We have no allocation on BLR-FRA flights for the requested ready date. Capacity is tight through end of May.",
+    "alternative_proposal": "We can quote BLR-DXB-FRA via Emirates SkyCargo with 5-7 day transit if the timing works."
+  }
+}
