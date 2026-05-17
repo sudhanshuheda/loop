@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <!-- background -->
+  <rect width="1600" height="1100" fill="#fdfcfa"/>
+
+  <!-- brand -->
+  <text x="80" y="86" font-size="22" font-weight="700" fill="#0a0a0a" letter-spacing="-0.3">Loop<tspan fill="#1d3a8a"> · v0.1</tspan></text>
+
+  <!-- title -->
+  <text x="80" y="160" font-size="42" font-weight="700" fill="#0a0a0a" letter-spacing="-1">What a Loop RFQ looks like</text>
+  <text x="80" y="200" font-size="20" fill="#555">Air freight, Bengaluru &#8594; Frankfurt, 2 pallets electronics. The whole message in one JSON.</text>
+
+  <!-- terminal-style code panel -->
+  <g transform="translate(80, 250)">
+    <rect width="1440" height="780" rx="14" fill="#0d1117"/>
+
+    <!-- traffic-light dots -->
+    <circle cx="32" cy="32" r="7" fill="#ff5f57"/>
+    <circle cx="56" cy="32" r="7" fill="#febc2e"/>
+    <circle cx="80" cy="32" r="7" fill="#28c840"/>
+    <text x="720" y="38" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="14" fill="#8b949e" text-anchor="middle">procurement.json</text>
+
+    <!-- code -->
+    <g font-family="ui-monospace, 'SF Mono', Menlo, Monaco, monospace" font-size="20">
+      <!-- line 1 -->
+      <text x="36" y="92" fill="#e6edf3">{</text>
+      <!-- envelope -->
+      <text x="36" y="124" fill="#e6edf3">  <tspan fill="#79c0ff">"loop_version"</tspan>:   <tspan fill="#a5d6ff">"0.1"</tspan>,</text>
+      <text x="36" y="156" fill="#e6edf3">  <tspan fill="#79c0ff">"message_type"</tspan>:   <tspan fill="#a5d6ff">"rfq"</tspan>,</text>
+      <text x="36" y="188" fill="#e6edf3">  <tspan fill="#79c0ff">"message_action"</tspan>: <tspan fill="#a5d6ff">"rfq_initial"</tspan>,</text>
+      <text x="36" y="220" fill="#e6edf3">  <tspan fill="#79c0ff">"message_id"</tspan>:     <tspan fill="#a5d6ff">"9c2a8b8e-2c1f-4f3a-9d2b-7a1d2a3f4e5d"</tspan>,</text>
+      <text x="36" y="252" fill="#e6edf3">  <tspan fill="#79c0ff">"thread_id"</tspan>:      <tspan fill="#a5d6ff">"9c2a8b8e-2c1f-4f3a-9d2b-7a1d2a3f4e5d"</tspan>,</text>
+      <text x="36" y="284" fill="#e6edf3">  <tspan fill="#79c0ff">"issued_at"</tspan>:      <tspan fill="#a5d6ff">"2026-05-17T09:00:00Z"</tspan>,</text>
+
+      <!-- issuer -->
+      <text x="36" y="316" fill="#e6edf3">  <tspan fill="#79c0ff">"issuer"</tspan>: { <tspan fill="#79c0ff">"org_name"</tspan>: <tspan fill="#a5d6ff">"Acme Logistics Pvt Ltd"</tspan>, <tspan fill="#79c0ff">"email"</tspan>: <tspan fill="#a5d6ff">"priya@acme.example"</tspan> },</text>
+      <text x="36" y="348" fill="#e6edf3">  <tspan fill="#79c0ff">"issuer_role"</tspan>: <tspan fill="#a5d6ff">"forwarder_requesting_quote"</tspan>,</text>
+      <text x="36" y="380" fill="#e6edf3">  <tspan fill="#79c0ff">"recipients"</tspan>:  [{ <tspan fill="#79c0ff">"org_name"</tspan>: <tspan fill="#a5d6ff">"BlueWing Freight"</tspan>, <tspan fill="#79c0ff">"email"</tspan>: <tspan fill="#a5d6ff">"quotes@bluewing.example"</tspan> }],</text>
+
+      <!-- body -->
+      <text x="36" y="412" fill="#e6edf3">  <tspan fill="#79c0ff">"body"</tspan>: {</text>
+      <text x="36" y="444" fill="#e6edf3">    <tspan fill="#79c0ff">"title"</tspan>:          <tspan fill="#a5d6ff">"Air freight: BLR &#8594; FRA, 2 pallets electronics"</tspan>,</text>
+      <text x="36" y="476" fill="#e6edf3">    <tspan fill="#79c0ff">"quote_deadline"</tspan>: <tspan fill="#a5d6ff">"2026-05-19T12:00:00Z"</tspan>,</text>
+      <text x="36" y="508" fill="#e6edf3">    <tspan fill="#79c0ff">"line_items"</tspan>: [</text>
+      <text x="36" y="540" fill="#e6edf3">      { <tspan fill="#79c0ff">"id"</tspan>: <tspan fill="#a5d6ff">"1"</tspan>, <tspan fill="#79c0ff">"description"</tspan>: <tspan fill="#a5d6ff">"Electronics, palletized, non-hazardous"</tspan>,</text>
+      <text x="36" y="572" fill="#e6edf3">        <tspan fill="#79c0ff">"quantity"</tspan>: { <tspan fill="#79c0ff">"value"</tspan>: <tspan fill="#a5d6ff">"2"</tspan>, <tspan fill="#79c0ff">"unit"</tspan>: <tspan fill="#a5d6ff">"PLT"</tspan> } }</text>
+      <text x="36" y="604" fill="#e6edf3">    ],</text>
+
+      <!-- freight extension -->
+      <text x="36" y="636" fill="#e6edf3">    <tspan fill="#79c0ff">"extensions"</tspan>: { <tspan fill="#79c0ff">"freight"</tspan>: {</text>
+      <text x="36" y="668" fill="#e6edf3">      <tspan fill="#79c0ff">"mode"</tspan>:              <tspan fill="#a5d6ff">"air"</tspan>,</text>
+      <text x="36" y="700" fill="#e6edf3">      <tspan fill="#79c0ff">"origin"</tspan>:            { <tspan fill="#79c0ff">"country"</tspan>: <tspan fill="#a5d6ff">"IN"</tspan>, <tspan fill="#79c0ff">"port_code"</tspan>: <tspan fill="#a5d6ff">"BLR"</tspan> },</text>
+      <text x="36" y="732" fill="#e6edf3">      <tspan fill="#79c0ff">"destination"</tspan>:       { <tspan fill="#79c0ff">"country"</tspan>: <tspan fill="#a5d6ff">"DE"</tspan>, <tspan fill="#79c0ff">"port_code"</tspan>: <tspan fill="#a5d6ff">"FRA"</tspan> },</text>
+      <text x="36" y="764" fill="#e6edf3">      <tspan fill="#79c0ff">"incoterms"</tspan>:         <tspan fill="#a5d6ff">"FCA"</tspan>, <tspan fill="#79c0ff">"incoterms_place"</tspan>: <tspan fill="#a5d6ff">"Bengaluru"</tspan>,</text>
+      <text x="36" y="796" fill="#e6edf3">      <tspan fill="#79c0ff">"ready_date"</tspan>:        <tspan fill="#a5d6ff">"2026-05-22"</tspan>,</text>
+      <text x="36" y="828" fill="#e6edf3">      <tspan fill="#79c0ff">"gross_weight"</tspan>:      { <tspan fill="#79c0ff">"value"</tspan>: <tspan fill="#a5d6ff">"850"</tspan>,  <tspan fill="#79c0ff">"unit"</tspan>: <tspan fill="#a5d6ff">"KGM"</tspan> },</text>
+      <text x="36" y="860" fill="#e6edf3">      <tspan fill="#79c0ff">"chargeable_weight"</tspan>: { <tspan fill="#79c0ff">"value"</tspan>: <tspan fill="#a5d6ff">"1100"</tspan>, <tspan fill="#79c0ff">"unit"</tspan>: <tspan fill="#a5d6ff">"KGM"</tspan> },</text>
+      <text x="36" y="892" fill="#e6edf3">      <tspan fill="#79c0ff">"hazardous"</tspan>:         { <tspan fill="#79c0ff">"is_hazardous"</tspan>: <tspan fill="#ff7b72">false</tspan> }</text>
+      <text x="36" y="924" fill="#e6edf3">    } }</text>
+      <text x="36" y="956" fill="#e6edf3">  }</text>
+      <text x="36" y="988" fill="#e6edf3">}</text>
+    </g>
+  </g>
+
+  <!-- caption -->
+  <text x="80" y="1075" font-size="15" fill="#888" letter-spacing="-0.1">Every weight in KGM &#183; every volume in MTQ &#183; ISO 4217 currency &#183; UN/LOCODE ports &#183; Incoterms 2020 &#183; no scraping</text>
+</svg>
